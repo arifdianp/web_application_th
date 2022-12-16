@@ -1,0 +1,67 @@
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
+<body>
+  {% extends 'base.html' %}
+  {% block content %}
+
+  </br>
+  {% if searched %}
+    <h1> you searched for {{searched}}</h1></br>
+    <table style="width:100%">
+      <tr>
+        <th>Risk Scenario Name</th>
+        <th>Risk Scenario Description</th>
+        <th>Mitigation Strategy</th>
+        <th>Last updated</th>
+        <th></th>
+      </tr>
+
+      {% for ans in answer %}
+        <tr>
+          <td>{{ans.name}}</td>
+          <td>{{ans.description}}</td>
+          <td>{{ans.mitigation_strategy}}</td>
+          <td>{{ans.last_updated_by}}</td>
+          <td>
+            <a href="{% url 'editRisk' ans.pk %}" class="btn btn-secondary">Edit</a>
+            <a href="{% url 'deleteRisk' ans.pk %}" class="btn btn-secondary">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+    <h1>Risk Scenario Database</h1></br>
+    <table style="width:100%">
+      <tr>
+        <th>Risk Scenario Name</th>
+        <th>Risk Scenario Description</th>
+        <th>Mitigation Strategy</th>
+        <th>Last updated</th>
+        <th></th>
+      </tr>
+
+      {% for ans in answer %}
+        <tr>
+          <td>{{ans.name}}</td>
+          <td>{{ans.description}}</td>
+          <td>{{ans.mitigation_strategy}}</td>
+          <td>{{ans.last_updated_by}}</td>
+          <td>
+            <a href="{% url 'editRisk' ans.pk %}" class="btn btn-secondary">Edit</a>
+            <a href="{% url 'deleteRisk' ans.pk %}" class="btn btn-secondary">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+
+  {% endblock %}
+
+</body>
+</html>

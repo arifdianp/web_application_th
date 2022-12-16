@@ -16,7 +16,7 @@ table, th, td {
   <h1>Risk Scenario Database</h1>
   {% endif %}
 
-  <a href="{% url 'addRisk' %}" class="btn btn-secondary"> Create new Risk</a>
+  <!--<a href="{% url 'addRisk' %}" class="btn btn-secondary"> Create new Risk</a>-->
   </br>
 
   <table style="width:100%">
@@ -28,13 +28,16 @@ table, th, td {
       <th></th>
     </tr>
 
-    {% for record in object_list %}
+    {% for record in object_list reversed %}
       <tr>
         <td>{{record.name}}</td>
         <td>{{record.description}}</td>
         <td>{{record.mitigation_strategy}}</td>
         <td>{{record.last_updated_by}}</td>
-        <td><button>Edit</button></td>
+        <td>
+          <a href="{% url 'editRisk' record.pk %}" class="btn btn-secondary">Edit</a>
+          <a href="{% url 'deleteRisk' record.pk %}" class="btn btn-secondary">Delete</a>
+        </td>
       </tr>
     {% endfor %}
   </table>

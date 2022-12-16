@@ -10,7 +10,7 @@ class Post(models.Model):
     last_updated_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name + '|' + self.description
+        return self.name 
 
     def get_absolute_url(self):
         return reverse('home')
