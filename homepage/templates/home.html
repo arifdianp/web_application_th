@@ -9,40 +9,50 @@ table, th, td {
   {% extends 'base.html' %}
   {% block content %}
 
-  </br>
-  {% if name %}
-  <h1> HEJFLJFDLEJF {{name}}</h1>
-  {% else %}
-  <h1>Risk Scenario Database</h1>
-  {% endif %}
+  {% if user.is_authenticated %}
 
-  <!--<a href="{% url 'addRisk' %}" class="btn btn-secondary"> Create new Risk</a>-->
-  </br>
+    </br>
+    <h1>Risk Scenario Database</h1></br>
+    <!--<a href="{% url 'addRisk' %}" class="btn btn-secondary"> Create new Risk</a>-->
+    </br>
 
-  <table style="width:100%">
-    <tr>
-      <th>Risk Scenario Name</th>
-      <th>Risk Scenario Description</th>
-      <th>Mitigation Strategy</th>
-      <th>Last updated</th>
-      <th></th>
-    </tr>
-
-    {% for record in object_list reversed %}
+    <table style="width:100%">
       <tr>
-        <td>{{record.name}}</td>
-        <td>{{record.description}}</td>
-        <td>{{record.mitigation_strategy}}</td>
-        <td>{{record.last_updated_by}}</td>
-        <td>
-          <a href="{% url 'editRisk' record.pk %}" class="btn btn-secondary">Edit</a>
-          <a href="{% url 'deleteRisk' record.pk %}" class="btn btn-secondary">Delete</a>
-        </td>
+        <th>Risk Scenario Name</th>
+        <th>Risk Scenario Description</th>
+        <th>Mitigation Strategy</th>
+        <th>Last updated</th>
+        <th></th>
       </tr>
-    {% endfor %}
-  </table>
 
+      {% for record in object_list reversed %}
+        <tr>
+          <td>{{record.name}}</td>
+          <td>{{record.description}}</td>
+          <td>{{record.mitigation_strategy}}</td>
+          <td>{{record.last_updated_by}}</td>
+          <td>
+            <a href="{% url 'editRisk' record.pk %}" class="btn btn-secondary">Edit</a>
+            <a href="{% url 'deleteRisk' record.pk %}" class="btn btn-secondary">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+
+  {% else %}
+    <h1>Login Page</h1>
+    </br>
+
+    <div class="form-group">
+    <form method="POST">
+      {% csrf_token %}
+      {{form.as_p}}
+      <button class="btn btn-secondary">Login</button>
+    </div>
+  {% endif %}
   {% endblock %}
+
 
 </body>
 </html>

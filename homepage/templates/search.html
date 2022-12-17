@@ -21,7 +21,7 @@ table, th, td {
         <th></th>
       </tr>
 
-      {% for ans in answer %}
+      {% for ans in answer reversed %}
         <tr>
           <td>{{ans.name}}</td>
           <td>{{ans.description}}</td>

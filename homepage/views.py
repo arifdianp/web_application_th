@@ -3,6 +3,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .forms import create_form, edit_form
 from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
 
 #def home(request):
 #    return render(request, 'home.html', {'name':'arif'})
@@ -33,3 +34,10 @@ def search(request):
         return render(request, 'search.html', {'searched':searched, 'answer':answer})
     else:
         return render(request, 'search.html',{})
+
+
+## authentication part
+class userRegister(CreateView):
+    form_class = UserCreationForm
+    template_name = 'register.html'
+    success_url = reverse_lazy('login')
