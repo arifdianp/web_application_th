@@ -1,7 +1,7 @@
 # Risk Management Database
-Objective: Design and implement a simple proof-of-concept web application that serves two types of users:
-•	Project Manager (PM): The project manager is in charge of conducting a risk assessment of their application project. He or she uses the web application to access the database of risk scenarios. If they find a risk scenario that can apply to their project, they add it to their risk table. They can also state whether the risk scenario has been mitigated.
-•	Risk Consultant (RC): The risk consultant has a global overview of all the risk tables created by the project manager(s). He or she uses the web application to view the risk tables created by the project managers and collaboratively work with the project managers to update the risk tables.
+Objective: Design and implement a simple proof-of-concept web application that serves two types of users:<br>
+•	Project Manager (PM): The project manager is in charge of conducting a risk assessment of their application project. He or she uses the web application to access the database of risk scenarios. If they find a risk scenario that can apply to their project, they add it to their risk table. They can also state whether the risk scenario has been mitigated.<br>
+•	Risk Consultant (RC): The risk consultant has a global overview of all the risk tables created by the project manager(s). He or she uses the web application to view the risk tables created by the project managers and collaboratively work with the project managers to update the risk tables.<br>
 
 
 Features required:
