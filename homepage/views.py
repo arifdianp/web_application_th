@@ -4,6 +4,7 @@ from .models import Post
 from .forms import create_form, edit_form
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Q
 
 #def home(request):
 #    return render(request, 'home.html', {'name':'arif'})
@@ -27,10 +28,11 @@ class delete_risk(DeleteView):
     template_name = 'delete_risk.html'
     success_url = reverse_lazy('home')
 
+
 def search(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        answer = Post.objects.filter(name__contains=searched)
+        answer = Post.objects.filter(Q(name__contains=searched) | Q(description__contains=searched) | Q(mitigation_strategy__contains=searched))
         return render(request, 'search.html', {'searched':searched, 'answer':answer})
     else:
         return render(request, 'search.html',{})

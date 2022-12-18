@@ -29,8 +29,8 @@
           <td>{{record.mitigation_progress}}</td>
           <td>{{record.last_updated_by}}</td>
           <td>
-            <a href="{% url 'editRisk' record.pk %}" class="btn btn-secondary">Edit</a>
-            {% if perms.homepage.add_post %}
+            <center><a href="{% url 'editRisk' record.pk %}" class="btn btn-secondary">Edit</a><center></br>
+            {% if perms.homepage.delete_post %}
             <a href="{% url 'deleteRisk' record.pk %}" class="btn btn-secondary">Delete</a>
             {% endif %}
           </td>

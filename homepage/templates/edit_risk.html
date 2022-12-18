@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+  </br>
   <h1>EDIT RISK PAGE</h1>
   </br>
 
@@ -14,4 +15,12 @@
     {{form.as_p}}
     <button class="btn btn-secondary">Update</button>
   </div>
+  <script>
+    var name = "{{user.id}}";
+    document.getElementById("who_updates").value = name;
+
+    if("{{perms.homepage.add_post}}" === "False"){
+      document.getElementById("mp").disabled = true;
+    }
+  </script>
 {% endblock %}

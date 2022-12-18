@@ -5,13 +5,14 @@
 {% endblock %}
 
 {% block content %}
+  </br>
   <h1>Create an account</h1>
   </br>
 
-  <div class="form-group">
-  <form method="POST">
+  <div class="jumbotron form-card">
+  <form method="POST" class="">
     {% csrf_token %}
     {{form.as_p}}
-    <button class="btn btn-secondary">Create</button>
+    <center><button class="btn btn-secondary btn-lg">Create</button></center>
   </div>
 {% endblock %}

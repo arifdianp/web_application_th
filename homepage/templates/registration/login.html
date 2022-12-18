@@ -5,13 +5,16 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Login Page</h1>
-  </br>
-
-  <div class="form-group">
-  <form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button class="btn btn-secondary">Login</button>
+  <div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+      <div class="jumbotron form-card">
+      <form method="POST">
+        <h2><center>Login Page</center></h2>
+        </br>
+        {% csrf_token %}
+        <center>{{form.as_p}}</center>
+        <center><button class="btn btn-secondary">Login</button></center>
+      </div>
+    </div>
   </div>
 {% endblock %}

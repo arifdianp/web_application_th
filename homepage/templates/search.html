@@ -18,7 +18,7 @@
         <th></th>
       </tr>
 
-      {% for ans in answer reversed %}
+      {% for ans in answer %}
         <tr>
           <td>{{ans.name}}</td>
           <td>{{ans.description}}</td>
@@ -26,8 +26,10 @@
           <td>{{ans.mitigation_progress}}</td>
           <td>{{ans.last_updated_by}}</td>
           <td>
-            <a href="{% url 'editRisk' ans.pk %}" class="btn btn-secondary">Edit</a>
+            <center><a href="{% url 'editRisk' ans.pk %}" class="btn btn-secondary">Edit</a><center></br>
+            {% if perms.homepage.delete_post %}
             <a href="{% url 'deleteRisk' ans.pk %}" class="btn btn-secondary">Delete</a>
+            {% endif %}
           </td>
         </tr>
       {% endfor %}
@@ -35,6 +37,7 @@
 
   {% else %}
     <h1>Risk Scenario Database</h1></br>
+    </br>
     <table class="table table-bordered table-hover">
       <tr>
         <th>Risk Scenario Name</th>
@@ -45,7 +48,7 @@
         <th></th>
       </tr>
 
-      {% for ans in answer %}
+      {% for ans in answer reversed %}
         <tr>
           <td>{{ans.name}}</td>
           <td>{{ans.description}}</td>
@@ -53,8 +56,10 @@
           <td>{{ans.mitigation_progress}}</td>
           <td>{{ans.last_updated_by}}</td>
           <td>
-            <a href="{% url 'editRisk' ans.pk %}" class="btn btn-secondary">Edit</a>
+            <center><a href="{% url 'editRisk' ans.pk %}" class="btn btn-secondary">Edit</a><center></br>
+            {% if perms.homepage.delete_post %}
             <a href="{% url 'deleteRisk' ans.pk %}" class="btn btn-secondary">Delete</a>
+            {% endif %}
           </td>
         </tr>
       {% endfor %}
