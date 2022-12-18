@@ -26,12 +26,13 @@
 2. Installing the virtual environment
    > pip3 install pipenv
 
-3. pipenv install django
+3. Installing latest version of django
+   > pipenv install django
 
-4. pipenv shell
+4. Run the virtual environment
+   > pipenv shell
 
-5. python manage.py makemigrations
-
-6. python manage.py migrate
-
-7. python manage.py runserver
+5. migration and running the django app
+  > python manage.py makemigrations
+  > python manage.py migrate
+  > python manage.py runserver
