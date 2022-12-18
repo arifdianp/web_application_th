@@ -33,6 +33,6 @@
    > pipenv shell
 
 5. migration and running the django app
-  > python manage.py makemigrations
-  > python manage.py migrate
-  > python manage.py runserver
+  > python manage.py makemigrations <br>
+  > python manage.py migrate <br>
+  > python manage.py runserver <br>
