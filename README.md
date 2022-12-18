@@ -1,10 +1,11 @@
 # Risk Management Database
 ### Objective: Design and implement a simple proof-of-concept web application that serves two types of users:<br>
 •	**Project Manager (PM)**: The project manager is in charge of conducting a risk assessment of their application project. He or she uses the web application to access the database of risk scenarios. If they find a risk scenario that can apply to their project, they add it to their risk table. They can also state whether the risk scenario has been mitigated.<br>
+
 •	**Risk Consultant (RC)**: The risk consultant has a global overview of all the risk tables created by the project manager(s). He or she uses the web application to view the risk tables created by the project managers and collaboratively work with the project managers to update the risk tables.<br>
 
 
-### Features required:<br>
+### Features:<br>
 •	**User sign-in**: A PM or RC should be able to login and see different views of the application based on their role.<br>
 
 •	**View risk scenario database**: Both the PM and RC should be able to view the risk scenario database.<br>
@@ -16,3 +17,21 @@
 •	**Create risk table**: The PM should be able to create a risk table by adding/deleting a risk scenario from the risk scenario database.<br>
 
 •	**Update risk tables**: The PM and RC should be able to share the same view of the risk table created by the PM and be able to update that table. The updates should be visible to each user as a notification.<br>
+
+### Documentations on how to run:<br>
+
+1. Install Latest Version of Python  
+   > Python==3.10.0
+
+2. Installing the virtual environment
+   > pip3 install pipenv
+
+3. pipenv install django
+
+4. pipenv shell
+
+5. python manage.py makemigrations
+
+6. python manage.py migrate
+
+7. python manage.py runserver
