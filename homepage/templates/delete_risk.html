@@ -5,14 +5,21 @@
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+  {% if perms.homepage.add_post %}
+  </br>
   <h1>DELETE RISK PAGE</h1>
   </br>
 
   <div class="form-group">
   <form method="POST">
     {% csrf_token %}
-    <strong>Are you sure you want to DELETE this risk scenario?</strong></br>
+    <strong>Are you sure you want to DELETE this risk scenario?</strong></br></br>
+    &nbsp
     <button class="btn btn-secondary">Yes</button>
+    &nbsp
     <a href="../" class="btn btn-secondary">No</a>
   </div>
+  {% endif %}
+{% endif %}
 {% endblock %}

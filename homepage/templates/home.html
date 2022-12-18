@@ -1,9 +1,4 @@
 <html>
-<style>
-table, th, td {
-  border:1px solid black;
-}
-</style>
 
 <body>
   {% extends 'base.html' %}
@@ -16,11 +11,12 @@ table, th, td {
     <!--<a href="{% url 'addRisk' %}" class="btn btn-secondary"> Create new Risk</a>-->
     </br>
 
-    <table style="width:100%">
+    <table class="table table-bordered table-hover">
       <tr>
         <th>Risk Scenario Name</th>
         <th>Risk Scenario Description</th>
         <th>Mitigation Strategy</th>
+        <th>Mitigation Progress</th>
         <th>Last updated</th>
         <th></th>
       </tr>
@@ -30,10 +26,13 @@ table, th, td {
           <td>{{record.name}}</td>
           <td>{{record.description}}</td>
           <td>{{record.mitigation_strategy}}</td>
+          <td>{{record.mitigation_progress}}</td>
           <td>{{record.last_updated_by}}</td>
           <td>
             <a href="{% url 'editRisk' record.pk %}" class="btn btn-secondary">Edit</a>
+            {% if perms.homepage.add_post %}
             <a href="{% url 'deleteRisk' record.pk %}" class="btn btn-secondary">Delete</a>
+            {% endif %}
           </td>
         </tr>
       {% endfor %}
@@ -41,14 +40,18 @@ table, th, td {
 
 
   {% else %}
-    <h1>Login Page</h1>
     </br>
-
-    <div class="form-group">
-    <form method="POST">
-      {% csrf_token %}
-      {{form.as_p}}
-      <button class="btn btn-secondary">Login</button>
+    <div class="jumbotron">
+      <h1 class="display-4">Welcome!</h1>
+      <p class="lead">This is a simple risk management database.</p>
+      <hr class="my-4">
+      <p>
+        Please
+        <a href="{% url 'login' %}">Login</a>
+        or
+        <a href="{% url 'register' %}">Create an account</a>
+        to access the database.
+      </p>
     </div>
   {% endif %}
   {% endblock %}
