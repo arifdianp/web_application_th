@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Post
-from .forms import create_form, edit_form
+from .forms import create_form, edit_form, signup_form, addstatus_form
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 #def home(request):
 #    return render(request, 'home.html', {'name':'arif'})
@@ -39,7 +41,32 @@ def search(request):
 
 
 ## authentication part
-class userRegister(CreateView):
-    form_class = UserCreationForm
-    template_name = 'register.html'
-    success_url = reverse_lazy('login')
+#class userRegister(CreateView):
+#    form_class = signup_form
+#    template_name = 'register.html'
+#    success_url = reverse_lazy('login')
+
+class userStatus(UpdateView):
+    form_class = addstatus_form
+    template_name = 'addstatus.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self):
+        return self.request.user
+
+def userRegister(request):
+    if request.method == "POST":
+        form = signup_form(request.POST)
+
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+
+            login(request, user)
+            messages.success(request, ("Registration successful"))
+            return redirect('addstatus')
+    else:
+        form = signup_form()
+    return render(request, 'register.html',{'form':form})

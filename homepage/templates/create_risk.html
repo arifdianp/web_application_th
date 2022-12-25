@@ -6,7 +6,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  {% if perms.homepage.add_post %}
+  {% if user.groups.all.0.name == 'Project Manager' %}
     </br>
     <h1>Create Risk Page</h1>
     </br>

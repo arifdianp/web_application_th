@@ -10,9 +10,9 @@
   </br>
 
   <div class="jumbotron form-card">
-  <form method="POST" class="">
+  <form action="{% url 'register' %}" method="POST" class="">
     {% csrf_token %}
-    {{form.as_p}}
-    <center><button class="btn btn-secondary btn-lg">Create</button></center>
+    {{ form.as_p }}
+    <center><button class="btn btn-secondary btn-lg">Next</button></center>
   </div>
 {% endblock %}

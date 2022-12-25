@@ -19,8 +19,8 @@
     var name = "{{user.id}}";
     document.getElementById("who_updates").value = name;
 
-    if("{{perms.homepage.add_post}}" === "False"){
-      document.getElementById("mp").disabled = true;
+    if("{{user.groups.all.0.name}}" === "Risk Consultant"){
+      document.getElementById("mp").style.visibility = "hidden";
     }
   </script>
 {% endblock %}

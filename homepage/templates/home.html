@@ -29,8 +29,10 @@
           <td>{{record.mitigation_progress}}</td>
           <td>{{record.last_updated_by}}</td>
           <td>
+            {% if record.last_updated_by.username == user.username or user.groups.all.0.name == 'Risk Consultant' %}
             <center><a href="{% url 'editRisk' record.pk %}" class="btn btn-secondary">Edit</a><center></br>
-            {% if perms.homepage.delete_post %}
+            {% endif %}
+            {% if user.groups.all.0.name == 'Project Manager' and record.last_updated_by.username == user.username %}
             <a href="{% url 'deleteRisk' record.pk %}" class="btn btn-secondary">Delete</a>
             {% endif %}
           </td>

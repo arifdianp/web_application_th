@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
-            {% if perms.homepage.add_post %}
+            {% if user.groups.all.0.name == 'Project Manager' %}
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'addRisk' %}">Add new Risk</a>
             </li>
