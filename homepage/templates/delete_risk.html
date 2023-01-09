@@ -6,7 +6,6 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  {% if perms.homepage.add_post %}
   </br>
   <h1>DELETE RISK PAGE</h1>
   </br>
@@ -20,6 +19,5 @@
     &nbsp
     <a href="../" class="btn btn-secondary">No</a>
   </div>
-  {% endif %}
 {% endif %}
 {% endblock %}

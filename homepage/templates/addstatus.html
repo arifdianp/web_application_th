@@ -15,4 +15,11 @@
     {{form.as_p}}
     <center><button class="btn btn-secondary btn-lg">Create</button></center>
   </div>
+  <script>
+    document.getElementsByClassName("helptext")[0].style.visibility = 'hidden';
+    document.getElementsByClassName("helptext")[1].style.visibility = 'hidden';
+    document.getElementById("id_password").style.visibility = 'hidden';
+    var grup_element = document.getElementById("id_groups");
+    grup_element.classList.add("form-control");
+  </script>
 {% endblock %}

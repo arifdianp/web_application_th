@@ -14,7 +14,8 @@ class Post(models.Model):
     description = models.TextField()
     mitigation_strategy = models.TextField()
     mitigation_progress = models.CharField(max_length=200, choices=PROGRESS_CHOICES, default="Not Mitigated")
-    last_updated_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="created_by")
+    last_updated_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="last_updated_by")
 
     def __str__(self):
         return self.name

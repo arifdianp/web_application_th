@@ -15,6 +15,7 @@
         <th>Mitigation Strategy</th>
         <th>Mitigation Progress</th>
         <th>Last updated</th>
+        <th>Created By</th>
         <th></th>
       </tr>
 
@@ -25,9 +26,12 @@
           <td>{{ans.mitigation_strategy}}</td>
           <td>{{ans.mitigation_progress}}</td>
           <td>{{ans.last_updated_by}}</td>
+          <td>{{ans.created_by}}</td>
           <td>
+            {% if ans.created_by.username == user.username or user.groups.all.0.name == 'Risk Consultant' %}
             <center><a href="{% url 'editRisk' ans.pk %}" class="btn btn-secondary">Edit</a><center></br>
-            {% if perms.homepage.delete_post %}
+            {% endif %}
+            {% if user.groups.all.0.name == 'Project Manager' and ans.created_by.username == user.username %}
             <a href="{% url 'deleteRisk' ans.pk %}" class="btn btn-secondary">Delete</a>
             {% endif %}
           </td>
@@ -45,6 +49,7 @@
         <th>Mitigation Strategy</th>
         <th>Mitigation Progress</th>
         <th>Last updated</th>
+        <th>Created By</th>
         <th></th>
       </tr>
 
@@ -55,9 +60,12 @@
           <td>{{ans.mitigation_strategy}}</td>
           <td>{{ans.mitigation_progress}}</td>
           <td>{{ans.last_updated_by}}</td>
+          <td>{{ans.created_by}}</td>
           <td>
+            {% if ans.created_by.username == user.username or user.groups.all.0.name == 'Risk Consultant' %}
             <center><a href="{% url 'editRisk' ans.pk %}" class="btn btn-secondary">Edit</a><center></br>
-            {% if perms.homepage.delete_post %}
+            {% endif %}
+            {% if user.groups.all.0.name == 'Project Manager' and ans.created_by.username == user.username %}
             <a href="{% url 'deleteRisk' ans.pk %}" class="btn btn-secondary">Delete</a>
             {% endif %}
           </td>

@@ -18,6 +18,7 @@
         <th>Mitigation Strategy</th>
         <th>Mitigation Progress</th>
         <th>Last updated</th>
+        <th>Created By</th>
         <th></th>
       </tr>
 
@@ -28,11 +29,12 @@
           <td>{{record.mitigation_strategy}}</td>
           <td>{{record.mitigation_progress}}</td>
           <td>{{record.last_updated_by}}</td>
+          <td>{{record.created_by}}</td>
           <td>
-            {% if record.last_updated_by.username == user.username or user.groups.all.0.name == 'Risk Consultant' %}
+            {% if record.created_by.username == user.username or user.groups.all.0.name == 'Risk Consultant' %}
             <center><a href="{% url 'editRisk' record.pk %}" class="btn btn-secondary">Edit</a><center></br>
             {% endif %}
-            {% if user.groups.all.0.name == 'Project Manager' and record.last_updated_by.username == user.username %}
+            {% if user.groups.all.0.name == 'Project Manager' and record.created_by.username == user.username %}
             <a href="{% url 'deleteRisk' record.pk %}" class="btn btn-secondary">Delete</a>
             {% endif %}
           </td>

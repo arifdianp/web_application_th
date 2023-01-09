@@ -1,6 +1,6 @@
 from django import forms
 from .models import Post
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField
 from django.contrib.auth.models import User, Group
 
 new_group, created = Group.objects.get_or_create(name ='Risk Consultant')
@@ -17,6 +17,7 @@ class create_form(forms.ModelForm):
             'description': forms.Textarea(attrs={'class':'form-control'}),
             'mitigation_strategy': forms.Textarea(attrs={'class':'form-control', 'id':'Strategy'}),
             'mitigation_progress': forms.Select(attrs={'class':'form-control col-sm-2', 'id':'mp'}),
+            'created_by': forms.TextInput(attrs={'class':'form-control', 'id':'who_creates', 'type':'hidden'}),
             'last_updated_by': forms.TextInput(attrs={'class':'form-control','value':'a','id':'who_updates', 'type':'hidden'})
         }
 
@@ -24,7 +25,7 @@ class edit_form(forms.ModelForm):
     class Meta:
         model = Post
         #fields = ('name','description','mitigation_strategy')
-        fields = '__all__'
+        fields = ('name', 'description', 'mitigation_strategy', 'mitigation_progress', 'last_updated_by')
         widgets = {
             'name': forms.TextInput(attrs={'class':'form-control','id':'name'}),
             'description': forms.Textarea(attrs={'class':'form-control'}),
