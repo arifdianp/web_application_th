@@ -36,3 +36,8 @@
   > python manage.py makemigrations <br>
   > python manage.py migrate <br>
   > python manage.py runserver <br>
+
+### Testing using Selenium
+1. pip install selenium
+2. install webdriver chrome selenium (check chrome version for compatibility)
+    setx PATH "%PATH%;C:\Users\ADP\web_application_th\"
